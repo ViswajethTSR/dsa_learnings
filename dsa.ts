@@ -24,6 +24,13 @@ class DataStructureLearnings {
         return fibonacci;
     }
 
+    //Anagram
+    async isAnagram(actualString: string, derivedString: string): Promise<boolean> {
+        actualString = actualString.split("").sort().join("");
+        derivedString = derivedString.split("").sort().join("");
+        return actualString === derivedString;
+
+    }
 }
 
 new DataStructureLearnings().executionMethod();
