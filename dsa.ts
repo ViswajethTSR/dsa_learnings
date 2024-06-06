@@ -1,12 +1,11 @@
-
-
 class DataStructureLearnings {
 
-
+    //main method
     async executionMethod() {
-        const pallindrome = await this.isPallindrome(232);
-        console.log(pallindrome);
-
+        const pallindrome = await this.isPallindrome(235);
+        console.log(`The given number is ${(pallindrome == true ? "pallindrome" : "not pallindrome")}`);
+        const fibonacci = await this.generateFibonacci(10);
+        console.log(`The generated fibonacci series are  ${fibonacci}`);
 
     }
 
@@ -16,17 +15,13 @@ class DataStructureLearnings {
         return number === +number.toString().split("").reverse().join("");
     }
 
-    //fibonacci series
-    async generateFibonacci(number:number):Promise<number[]>{
-        const fibonacci=[0];
-        for(let i=1;i<number;i++){
-            
-
+    //Fibonacci series
+    async generateFibonacci(number: number): Promise<number[]> {
+        const fibonacci = [0, 1];
+        for (let i = 2; i < number; i++) {
+            fibonacci.push(fibonacci[i - 1] + fibonacci[i - 2]);
         }
-
-
-        return [];
-
+        return fibonacci;
     }
 
 }

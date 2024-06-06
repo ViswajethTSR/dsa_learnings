@@ -4,7 +4,7 @@
   "main": "dsa.js",
   "license": "MIT",
   "scripts": {
-    "start": "tsc dsa.ts && node dsa.js"
+    "start": "nodemon --exec ts-node dsa.ts"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
