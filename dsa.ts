@@ -1,18 +1,62 @@
 class DataStructureLearnings {
 
+    arr: number[] = [1, 12, 0, 23, 34, 45, 56, 67, 78, 89, 90, 100];
+
+    constructor(name: string, age: number) {
+        console.log(`Hello I'm ${name} and I'm ${age} old `);
+    }
+
     //main method
-    async executionMethod() {
-        const pallindrome = await this.isPallindrome(235);
-        console.log(`The given number is ${(pallindrome == true ? "pallindrome" : "not pallindrome")}`);
-        const fibonacci = await this.generateFibonacci(10);
-        console.log(`The generated fibonacci series are  ${fibonacci}`);
+    async executionMethod(): Promise<void> {
+        // const pallindrome = await this.isPallindrome("121");
+        // console.log(`The given input is ${(pallindrome == true ? "pallindrome" : "not pallindrome")}`);
+        // const fibonacci = await this.generateFibonacci(100);
+        // console.log(`The generated fibonacci series are  ${fibonacci}`);
+        // this.isPresentArray(53).then((a) => console.log(a ? "The given input present in the array" : "THe given input is not present in array"));
+        // this.findMaxAndMin()
+        //     .then((a) => console.log(a));
+
+        this.findDuplicates(this.arr);
+    }
+
+    async isPresentArray(number: number): Promise<boolean | undefined> {
+        const arr: number[] = this.arr;
+        for (const num of arr) {
+            if (num === number) return true;
+        }
+    }
+
+    async findMaxAndMin(): Promise<{ min: number, max: number }> {
+
+        let result = {
+            min: 0,
+            max: 0,
+        }
+
+        const numberArr = this.arr;
+        // let min=Math.min(...numberArr);
+        // let max=Math.max(...numberArr);
+        let min = numberArr[0];
+        let max = numberArr[0];
+        for (const number of numberArr) {
+            if (max < number) {
+                max = number;
+            }
+            if (min > number) {
+                min = number;
+            }
+        }
+        return result = {
+            max: max,
+            min: min,
+        };
 
     }
 
-    //pallindrome
-    async isPallindrome(number: number): Promise<boolean> {
-        if (number < 0) return false;
-        return number === +number.toString().split("").reverse().join("");
+    //Pallindrome
+    async isPallindrome(input: string): Promise<boolean> {
+        // if (number < 0) return false;
+        return input === input.toString().split("").reverse().join("");
     }
 
     //Fibonacci series
@@ -24,6 +68,29 @@ class DataStructureLearnings {
         return fibonacci;
     }
 
+    //Find duplicates
+    async findDuplicates(arr: number[]) {
+
+        let elementCount: { [key: number]: number } = {};
+
+        let duplicates: number[] = [];
+
+        arr.forEach(item => {
+            if (elementCount[item]) {
+                elementCount[item]++;
+            } else {
+                elementCount[item] = 1;
+            }
+        });
+
+        for (let item in elementCount) {
+            if (elementCount[item] > 1) {
+                duplicates.push(Number.parseInt(item));
+            }
+        }
+        console.log("Duplicates:", duplicates);
+    }
+
     //Anagram
     async isAnagram(actualString: string, derivedString: string): Promise<boolean> {
         actualString = actualString.split("").sort().join("");
@@ -33,4 +100,4 @@ class DataStructureLearnings {
     }
 }
 
-new DataStructureLearnings().executionMethod();
+new DataStructureLearnings("viswa", 21).executionMethod();
