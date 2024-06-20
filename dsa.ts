@@ -34,8 +34,6 @@ class DataStructureLearnings {
         }
 
         const numberArr = this.arr;
-        // let min=Math.min(...numberArr);
-        // let max=Math.max(...numberArr);
         let min = numberArr[0];
         let max = numberArr[0];
         for (const number of numberArr) {
