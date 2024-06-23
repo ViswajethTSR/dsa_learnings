@@ -18,7 +18,8 @@ class DataStructureLearnings {
 
         // this.findDuplicatesByMyMethod();
         // this.findMaxAndMin();
-        this.sortTheArrayLikeWave();
+        // this.sortTheArrayLikeWave();
+        this.transposeMatrix([[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]);
     }
 
     async isPresentArray(number: number): Promise<boolean | undefined> {
@@ -124,6 +125,22 @@ class DataStructureLearnings {
         actualString = actualString.split("").sort().join("");
         derivedString = derivedString.split("").sort().join("");
         return actualString === derivedString;
+
+    }
+    
+    async transposeMatrix(array2d: number[][]) {
+
+        const rows = array2d.length;
+        const cols = array2d[0].length;
+
+        const transposedMatrix: number[][] = new Array(cols).fill(null).map(() => new Array(rows).fill(0));
+        console.log(transposedMatrix);
+        for (let i = 0; i < rows; i++) {
+            for (let j = 0; j < cols; j++) {
+                transposedMatrix[j][i] = array2d[i][j];
+            }
+        }
+        console.log(transposedMatrix);
 
     }
 }
