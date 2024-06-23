@@ -16,8 +16,9 @@ class DataStructureLearnings {
         // this.findMaxAndMin()
         //     .then((a) => console.log(a));    
 
-        this.findDuplicatesByMyMethod();
+        // this.findDuplicatesByMyMethod();
         // this.findMaxAndMin();
+        this.sortTheArrayLikeWave();
     }
 
     async isPresentArray(number: number): Promise<boolean | undefined> {
@@ -93,15 +94,30 @@ class DataStructureLearnings {
     async findDuplicatesByMyMethod() {
 
         const arr: number[] = [1, 2, 2, 3, 4, 1];
-        
+
         const maps: any = arr.reduce((counts, value) => {
             counts.set(value, (counts.get(value) || 0) + 1);
             return counts;
         }, new Map<number, number>());
 
         for (const map of maps) {
-            if (map[1] > 1)console.log(map[0]);
+            if (map[1] > 1) console.log(map[0]);
         }
+    }
+
+    async sortTheArrayLikeWave() {
+        const arr: number[] = [23, 34, 75, 12, 67, 98, 65, 43, 150, 1500, 13, 20];
+        arr.sort((a, b) => a - b);
+        let temp: number = 0;
+
+        console.log(arr);
+        for (let i = 0; i < arr.length - 1; i += 2) {
+            temp = arr[i];
+            arr[i] = arr[i + 1];
+            arr[i + 1] = temp;
+
+        }
+        console.log(arr);
     }
 
     //Anagram
