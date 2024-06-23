@@ -128,7 +128,8 @@ class DataStructureLearnings {
     }
 }
 
-function calculateAge(birthdate: Date): number {
+const calculateAge = (birthdate: Date): number => {
+
     const today = new Date();
     let age = today.getFullYear() - birthdate.getFullYear();
     const monthDiff = today.getMonth() - birthdate.getMonth();
