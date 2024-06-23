@@ -14,9 +14,10 @@ class DataStructureLearnings {
         // console.log(`The generated fibonacci series are  ${fibonacci}`);
         // this.isPresentArray(53).then((a) => console.log(a ? "The given input present in the array" : "THe given input is not present in array"));
         // this.findMaxAndMin()
-        //     .then((a) => console.log(a));
+        //     .then((a) => console.log(a));    
 
-        this.findDuplicates(this.arr);
+        this.findDuplicatesByMyMethod();
+        // this.findMaxAndMin();
     }
 
     async isPresentArray(number: number): Promise<boolean | undefined> {
@@ -89,6 +90,20 @@ class DataStructureLearnings {
         console.log("Duplicates:", duplicates);
     }
 
+    async findDuplicatesByMyMethod() {
+
+        const arr: number[] = [1, 2, 2, 3, 4, 1];
+        
+        const maps: any = arr.reduce((counts, value) => {
+            counts.set(value, (counts.get(value) || 0) + 1);
+            return counts;
+        }, new Map<number, number>());
+
+        for (const map of maps) {
+            if (map[1] > 1)console.log(map[0]);
+        }
+    }
+
     //Anagram
     async isAnagram(actualString: string, derivedString: string): Promise<boolean> {
         actualString = actualString.split("").sort().join("");
@@ -98,4 +113,4 @@ class DataStructureLearnings {
     }
 }
 
-new DataStructureLearnings("viswa", 21).executionMethod();
+new DataStructureLearnings("Viswajeth TSR", 21).executionMethod();
