@@ -15,11 +15,10 @@ class DataStructureLearnings {
         // this.isPresentArray(53).then((a) => console.log(a ? "The given input present in the array" : "THe given input is not present in array"));
         // this.findMaxAndMin()
         //     .then((a) => console.log(a));    
-
-        // this.findDuplicatesByMyMethod();
-        // this.findMaxAndMin();
-        // this.sortTheArrayLikeWave();
-        this.transposeMatrix([[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]);
+        // let input: any = 205468;
+        // this.insertMinusSymbolBetweenTwoEvenNUmbers(input);
+        const arr: number[] = [0,25,-10,-3, 8, 7, 6, 5, -4,-1, 3, 2, 1];
+        this.sortTheGivenArray(arr);
     }
 
     async isPresentArray(number: number): Promise<boolean | undefined> {
@@ -127,7 +126,7 @@ class DataStructureLearnings {
         return actualString === derivedString;
 
     }
-    
+
     async transposeMatrix(array2d: number[][]) {
 
         const rows = array2d.length;
@@ -142,6 +141,40 @@ class DataStructureLearnings {
         }
         console.log(transposedMatrix);
 
+    }
+
+    public insertMinusSymbolBetweenTwoEvenNUmbers(input: number) {
+        let convertedStringInput = input.toString();
+        console.log(convertedStringInput);
+        const arr = new Array(...convertedStringInput.split(''));
+        const formattedArr: string[] = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (parseInt(arr[i]) % 2 === 0 && parseInt(arr[i + 1]) % 2 === 0) {
+                formattedArr.push(arr[i]);
+                formattedArr.push('-');
+                console.log(formattedArr);
+            }
+            else {
+                formattedArr.push(arr[i]);
+                console.log(formattedArr);
+            }
+        }
+        console.log(formattedArr.join(''));
+    }
+
+    public sortTheGivenArray(arr: number[]) {
+
+        let temp = 0;
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+        console.log(arr);
     }
 }
 
