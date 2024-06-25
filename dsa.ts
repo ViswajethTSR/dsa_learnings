@@ -1,3 +1,5 @@
+import { developer } from "./calculate_age";
+
 class DataStructureLearnings {
 
     arr: number[] = [1, 12, 0, 23, 34, 45, 56, 67, 78, 89, 90, 100];
@@ -17,8 +19,11 @@ class DataStructureLearnings {
         //     .then((a) => console.log(a));    
         // let input: any = 205468;
         // this.insertMinusSymbolBetweenTwoEvenNUmbers(input);
-        const arr: number[] = [0,25,-10,-3, 8, 7, 6, 5, -4,-1, 3, 2, 1];
-        this.sortTheGivenArray(arr);
+        // const arr: number[] = [0,25,-10,-3, 8, 7, 6, 5, -4,-1, 3, 2, 1];
+        // this.sortTheGivenArray(arr);
+
+        const arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3, 3, 3, 4, 5, 5,];
+        this.findMaximumElement(arr1);
     }
 
     async isPresentArray(number: number): Promise<boolean | undefined> {
@@ -176,32 +181,29 @@ class DataStructureLearnings {
         }
         console.log(arr);
     }
-}
+    public findMaximumElement(arr: any[]) {
 
-const calculateAge = (birthdate: Date): number => {
+        const elementCounts = arr.reduce((counts, value) => {
+            counts.set(value, (counts.get(value) || 0) + 1);
+            return counts;
+        }, new Map());
+        console.log(elementCounts);
+        let maxCount = 0;
+        let minCount = 1;
+        let maxvalue = 0;
+        let minValue = 0;
+        for (const elementCount of elementCounts) {
+            if (elementCount[1] > maxCount) {
+                maxCount = elementCount[1];
+                maxvalue = elementCount[0];
+            }
+            if (elementCount[1] <= 1) {
+                minCount = elementCount[1];
+                minValue = elementCount[0];
+            }
 
-    const today = new Date();
-    let age = today.getFullYear() - birthdate.getFullYear();
-    const monthDiff = today.getMonth() - birthdate.getMonth();
-    const dayDiff = today.getDate() - birthdate.getDate();
-
-    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-        age--;
+        }
+        console.log(`Max:${maxvalue} (${maxCount} times)\nMin:${minValue} (${minCount} times)`);
     }
-
-    return age;
 }
-
-const developer: IDeveloper = {
-    name: "Viswajeth TSR",
-    email: "viswa.dev.in@gmail.com",
-    age: calculateAge(new Date(2003, 5, 4))
-}
-
 new DataStructureLearnings(developer.name, developer.age).executionMethod();
-
-interface IDeveloper {
-    name: string,
-    email: string,
-    age: number,
-}
