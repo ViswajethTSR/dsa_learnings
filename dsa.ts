@@ -16,14 +16,19 @@ class DataStructureLearnings {
         // console.log(`The generated fibonacci series are  ${fibonacci}`);
         // this.isPresentArray(53).then((a) => console.log(a ? "The given input present in the array" : "THe given input is not present in array"));
         // this.findMaxAndMin()
-        //     .then((a) => console.log(a));    
+        //     .then((a) => console.log(a));
         // let input: any = 205468;
         // this.insertMinusSymbolBetweenTwoEvenNUmbers(input);
-        // const arr: number[] = [0,25,-10,-3, 8, 7, 6, 5, -4,-1, 3, 2, 1];
+        // const arr: number[] = [0, 25, -10, -3, 8, 7, 6, 5, -4, -1, 3, 2, 1];
         // this.sortTheGivenArray(arr);
 
-        const arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3, 3, 3, 4, 5, 5,];
-        this.findMaximumElement(arr1);
+        // const arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3, 3, 3, 4, 5, 5,];
+        // this.findMaximumElement(arr1);
+        // this.convertCapitalsToSmallAndSmalltoCapital();
+        // this.printThe2dArray()
+        // this.sumOfSquareOFArray();
+        // this.sumAndProductOfArray();
+        this.removeDuplicates()
     }
 
     async isPresentArray(number: number): Promise<boolean | undefined> {
@@ -204,6 +209,66 @@ class DataStructureLearnings {
 
         }
         console.log(`Max:${maxvalue} (${maxCount} times)\nMin:${minValue} (${minCount} times)`);
+    }
+
+    public convertCapitalsToSmallAndSmalltoCapital() {
+        const string: string = "The Quick Brown Fox";
+        const stringArr: string[] = string.split(' ');
+        for (let i = 0; i < stringArr.length; i++) {
+            const splitedString: string[] = stringArr[i].split('');
+            for (let i = 0; i < splitedString.length; i++) {
+                if (i === 0) {
+                    splitedString[i] = splitedString[i].toLocaleLowerCase();
+                }
+                else {
+                    splitedString[i] = splitedString[i].toLocaleUpperCase();
+                }
+            }
+            stringArr[i] = splitedString.join('');
+        }
+        const formattedString: string = stringArr.join(' ')
+        console.log(formattedString);
+    }
+
+    public printThe2dArray() {
+        const array2d: number[][] = [[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]];
+        for (const arr of array2d) {
+            console.log(`row ${array2d.indexOf(arr)}`);
+            // console.log(...arr);
+            for (const number of arr) {
+                console.log(number);
+            }
+        }
+    }
+    public sumOfSquareOFArray() {
+        const numberArr = [1, 2, 3, 4, 5, 6];
+        let sum = 0;
+        numberArr.forEach((a) => {
+            const square = Math.pow(a, 2);
+            sum += square;
+        })
+        console.log(sum);
+    }
+    public sumAndProductOfArray() {
+        const numberArr = [1, 2, 3, 4, 5, 6];
+        let sum = 0;
+        let product = 1;
+        numberArr.forEach((a) => {
+            sum += a;
+            product *= a;
+        });
+        console.log(sum, product);
+    }
+    public removeDuplicates() {
+        const arr: any[] = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3, 3, 3, 4, 5, 5,];
+        const filteredArr: any[] = [];
+        for (const num1 of arr) {
+            for (const num2 of arr) {
+                if (num1 === num2 && !filteredArr.includes(num2)) filteredArr.push(num2);
+            }
+        }
+        
+        console.log(filteredArr);
     }
 }
 new DataStructureLearnings(developer.name, developer.age).executionMethod();
